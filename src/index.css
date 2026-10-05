@@ -1,0 +1,531 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Syne', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* CREATOR EDITORIAL System Tokens */
+    --ce-pub-bg: #F7F8F2;
+    --ce-pub-text: #17231C;
+    --ce-pub-muted: #647168;
+    --ce-pub-accent: #D9F36B;
+    --ce-pub-accent2: #92B76B;
+    --ce-pub-card: #FFFFFF;
+    --ce-pub-border: #E1E7D9;
+    --ce-pub-dark: #101612;
+
+    /* DARK DASHBOARD */
+    --ce-dash-bg: #101612;
+    --ce-dash-sidebar: #19241E;
+    --ce-dash-card: #202E25;
+    --ce-dash-elevated: #29392F;
+    --ce-dash-text: #F4F2E9;
+    --ce-dash-muted: #BECABE;
+    --ce-dash-border: #27382D;
+    --ce-dash-accent: #D9F36B;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    background-color: #F7F8F2;
+    color: #17231C;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark body {
+    background-color: #101612;
+    color: #F4F2E9;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Cohesive Dark & Light Theme System (Ultra-Clear High Contrast)
+----------------------------------------------------------------------------- */
+html.dark {
+  color-scheme: dark;
+}
+
+/* Background & Surfaces */
+html.dark .bg-\[\#F7F8F2\] {
+  background-color: #101612 !important;
+}
+
+html.dark .bg-\[\#FFFFFF\],
+html.dark .bg-white {
+  background-color: #19241E !important;
+}
+
+/* Deep banner surface in dark mode */
+html.dark .bg-\[\#101612\] {
+  background-color: #141C16 !important;
+  border-color: #283A2E !important;
+}
+
+/* Active buttons / chips with dark fill become distinct elevated surfaces */
+html.dark .bg-\[\#17231C\] {
+  background-color: #273A2E !important;
+  color: #F4F2E9 !important;
+}
+
+html.dark .bg-\[\#17231C\] * {
+  color: #F4F2E9 !important;
+}
+
+html.dark .bg-\[\#17231C\] .text-\[\#D9F36B\],
+html.dark .bg-\[\#17231C\] svg.text-\[\#D9F36B\] {
+  color: #D9F36B !important;
+}
+
+/* =========================================================================
+   NAVIGATION (NAVBAR, SIDEBAR & HEADER) DARK MODE CLARITY FIXES
+========================================================================= */
+
+/* All navigation bars & sidebars in dark mode - Deep rich dark surfaces */
+html.dark header,
+html.dark aside,
+html.dark nav {
+  background-color: #141C16 !important;
+  border-color: #27382D !important;
+  color: #F4F2E9 !important;
+}
+
+/* Semi-transparent sticky navbar on public pages in dark mode */
+html.dark header.bg-\[\#F7F8F2\]\/95,
+html.dark .bg-\[\#F7F8F2\]\/95,
+html.dark .bg-\[\#F7F8F2\]\/90,
+html.dark .bg-\[\#F7F8F2\]\/80 {
+  background-color: rgba(20, 28, 22, 0.96) !important;
+  border-color: #27382D !important;
+}
+
+/* Sidebar background */
+html.dark aside {
+  background-color: #131A15 !important;
+  border-color: #27382D !important;
+}
+
+/* Brand wordmark in navigation */
+html.dark header button.font-display,
+html.dark nav button.font-display,
+html.dark aside button.font-display {
+  color: #FFFFFF !important;
+}
+
+/* Inactive navigation links and buttons: Crisp, readable high-contrast soft sage */
+html.dark aside button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]),
+html.dark nav button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]),
+html.dark nav a:not(.bg-\[\#D9F36B\]),
+html.dark header button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]) {
+  color: #CAD7CE !important;
+}
+
+/* Navigation button icons in dark mode */
+html.dark aside button:not(.bg-\[\#17231C\]) svg,
+html.dark nav button:not(.bg-\[\#17231C\]) svg,
+html.dark header button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]) svg {
+  color: #8FA496 !important;
+  stroke: #8FA496 !important;
+}
+
+/* Hover state on inactive navigation items: Pure crisp white with deep forest background */
+html.dark aside button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]):hover,
+html.dark nav button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]):hover,
+html.dark nav a:not(.bg-\[\#D9F36B\]):hover,
+html.dark header button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]):hover {
+  color: #FFFFFF !important;
+  background-color: #203125 !important;
+}
+
+html.dark aside button:not(.bg-\[\#17231C\]):hover svg,
+html.dark nav button:not(.bg-\[\#17231C\]):hover svg,
+html.dark header button:not(.bg-\[\#17231C\]):not(.bg-\[\#D9F36B\]):hover svg {
+  color: #D9F36B !important;
+  stroke: #D9F36B !important;
+}
+
+/* Active navigation item in sidebar, navbar, and tabs */
+html.dark aside button.bg-\[\#17231C\],
+html.dark nav button.bg-\[\#17231C\],
+html.dark div button.bg-\[\#17231C\] {
+  background-color: #273C2F !important;
+  color: #FFFFFF !important;
+  border-color: #385340 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark aside button.bg-\[\#17231C\] svg,
+html.dark nav button.bg-\[\#17231C\] svg,
+html.dark div button.bg-\[\#17231C\] svg {
+  color: #D9F36B !important;
+  stroke: #D9F36B !important;
+}
+
+/* Active bottom navigation items in sidebar */
+html.dark aside .border-t button {
+  color: #CAD7CE !important;
+}
+
+html.dark aside .border-t button:hover {
+  color: #FFFFFF !important;
+  background-color: #1F2D23 !important;
+}
+
+/* Sidebar section headers (e.g. Core Creation, Strategy & Planning) */
+html.dark aside .text-\[\#647168\] {
+  color: #8FA496 !important;
+}
+
+/* Dropdown menus inside header & navigation (Workspace & User Menu) */
+html.dark header .bg-\[\#FFFFFF\],
+html.dark nav .bg-\[\#FFFFFF\] {
+  background-color: #19241E !important;
+  border-color: #27382D !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark header .bg-\[\#FFFFFF\] button,
+html.dark nav .bg-\[\#FFFFFF\] button {
+  color: #CAD7CE !important;
+}
+
+html.dark header .bg-\[\#FFFFFF\] button:hover,
+html.dark nav .bg-\[\#FFFFFF\] button:hover {
+  color: #FFFFFF !important;
+  background-color: #243528 !important;
+}
+
+html.dark header .bg-\[\#FFFFFF\] .text-\[\#17231C\] {
+  color: #FFFFFF !important;
+}
+
+html.dark header .bg-\[\#FFFFFF\] .text-\[\#647168\] {
+  color: #8FA496 !important;
+}
+
+/* Default dark mode typography - Crisp & High Contrast */
+html.dark .text-\[\#17231C\] {
+  color: #F4F2E9 !important;
+}
+
+html.dark .text-\[\#647168\] {
+  color: #CAD7CE !important;
+}
+
+html.dark .text-\[\#415348\] {
+  color: #D5E1D9 !important;
+}
+
+/* Borders and Dividers */
+html.dark .border-\[\#E1E7D9\],
+html.dark .border-\[\#E1E7D9\]\/50,
+html.dark .border-\[\#E1E7D9\]\/60 {
+  border-color: #27392E !important;
+}
+
+html.dark .divide-\[\#E1E7D9\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #27392E !important;
+}
+
+/* =========================================================================
+   PRIMARY LIME ACCENTS & BADGES - STRICTLY KEEP DARK TEXT #101612
+========================================================================= */
+html.dark .bg-\[\#D9F36B\],
+html.dark button.bg-\[\#D9F36B\],
+html.dark a.bg-\[\#D9F36B\],
+html.dark span.bg-\[\#D9F36B\],
+html.dark header button.bg-\[\#D9F36B\],
+html.dark nav button.bg-\[\#D9F36B\],
+html.dark aside button span.bg-\[\#D9F36B\],
+html.dark div button span.bg-\[\#D9F36B\] {
+  background-color: #D9F36B !important;
+  color: #101612 !important;
+}
+
+html.dark .bg-\[\#D9F36B\] *,
+html.dark button.bg-\[\#D9F36B\] *,
+html.dark a.bg-\[\#D9F36B\] *,
+html.dark span.bg-\[\#D9F36B\] *,
+html.dark header button.bg-\[\#D9F36B\] *,
+html.dark nav button.bg-\[\#D9F36B\] *,
+html.dark aside button span.bg-\[\#D9F36B\] *,
+html.dark div button span.bg-\[\#D9F36B\] * {
+  color: #101612 !important;
+}
+
+html.dark button.bg-\[\#D9F36B\] svg,
+html.dark header button.bg-\[\#D9F36B\] svg,
+html.dark nav button.bg-\[\#D9F36B\] svg {
+  color: #101612 !important;
+  fill: #101612 !important;
+  stroke: #101612 !important;
+}
+
+html.dark button.bg-\[\#D9F36B\]:hover,
+html.dark a.bg-\[\#D9F36B\]:hover,
+html.dark header button.bg-\[\#D9F36B\]:hover,
+html.dark nav button.bg-\[\#D9F36B\]:hover {
+  background-color: #c6e255 !important;
+  color: #101612 !important;
+}
+
+/* Status Chips and Badges contrast fixes in dark mode */
+html.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+html.dark .text-emerald-800,
+html.dark .text-emerald-700 {
+  color: #6ee7b7 !important;
+}
+
+html.dark .bg-rose-50 {
+  background-color: rgba(244, 63, 94, 0.18) !important;
+  border-color: rgba(244, 63, 94, 0.4) !important;
+}
+html.dark .text-rose-800,
+html.dark .text-rose-700,
+html.dark .text-rose-600 {
+  color: #fda4af !important;
+}
+
+html.dark .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.18) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+}
+html.dark .text-amber-800,
+html.dark .text-amber-700 {
+  color: #fcd34d !important;
+}
+
+html.dark .bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+html.dark .text-blue-800,
+html.dark .text-blue-700 {
+  color: #93c5fd !important;
+}
+
+html.dark .bg-indigo-50,
+html.dark .bg-indigo-50\/60 {
+  background-color: rgba(99, 102, 241, 0.18) !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+}
+html.dark .text-indigo-900,
+html.dark .text-indigo-950,
+html.dark .text-indigo-800 {
+  color: #c7d2fe !important;
+}
+
+/* Dark mode inputs, selects, textareas */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #141D17 !important;
+  color: #F4F2E9 !important;
+  border-color: #2A3C30 !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  background-color: #1A261E !important;
+  border-color: #92B76B !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #76887B !important;
+}
+
+html.dark tr.hover\:bg-\[\#F7F8F2\]\/60:hover {
+  background-color: rgba(36, 52, 41, 0.7) !important;
+}
+
+html.dark .hover\:bg-\[\#F7F8F2\]:hover {
+  background-color: #233427 !important;
+}
+
+/* Select options & dropdown clarity in all browsers */
+html.dark select option {
+  background-color: #19241E !important;
+  color: #F4F2E9 !important;
+}
+
+/* Prose & Generated Content typography in dark mode */
+html.dark .prose {
+  color: #F4F2E9 !important;
+}
+html.dark .prose * {
+  color: #F4F2E9 !important;
+}
+html.dark .prose strong,
+html.dark .prose h1,
+html.dark .prose h2,
+html.dark .prose h3,
+html.dark .prose h4 {
+  color: #FFFFFF !important;
+}
+html.dark .prose code {
+  color: #D9F36B !important;
+  background-color: #121A14 !important;
+}
+
+/* Badges with olive green text become bright lime in dark mode */
+html.dark .text-\[\#719129\] {
+  color: #D9F36B !important;
+}
+
+/* Tables in dark mode */
+html.dark th {
+  color: #AEC1B2 !important;
+  border-color: #27392E !important;
+}
+
+html.dark td {
+  color: #F4F2E9 !important;
+  border-color: #27392E !important;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(16, 22, 18, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(146, 183, 107, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 243, 107, 0.6);
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid #D9F36B;
+  outline-offset: 2px;
+}
+
+/* Tabular figures for data tables and counters */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Page Transition & Loading Animations */
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes topProgressSweep {
+  0% {
+    width: 0%;
+    opacity: 1;
+  }
+  40% {
+    width: 65%;
+    opacity: 1;
+  }
+  80% {
+    width: 88%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-page-enter {
+  animation: pageEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-modal-pop {
+  animation: modalPop 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.top-progress-bar {
+  animation: topProgressSweep 0.35s ease-out forwards;
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #E1E7D9 25%, #F7F8F2 50%, #E1E7D9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Creator Editorial Custom Utilities */
+.bg-ce-pub-bg { background-color: #F7F8F2; }
+.text-ce-pub-primary { color: #17231C; }
+.text-ce-pub-secondary { color: #647168; }
+.bg-ce-accent { background-color: #D9F36B; }
+.text-ce-accent { color: #D9F36B; }
+.border-ce-pub { border-color: #E1E7D9; }
+
+.bg-ce-dark { background-color: #101612; }
+.bg-ce-sidebar { background-color: #19241E; }
+.bg-ce-card { background-color: #202E25; }
+.bg-ce-elevated { background-color: #29392F; }
+.text-ce-dash-primary { color: #F4F2E9; }
+.text-ce-dash-secondary { color: #BECABE; }
+.border-ce-dash { border-color: #26382D; }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

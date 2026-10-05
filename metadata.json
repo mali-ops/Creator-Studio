@@ -1,0 +1,6 @@
+{
+  "name": "AI Content Creator Studio",
+  "description": "Production-grade SaaS suite for creators and agencies featuring 16 specialized AI content generators, brand voice management, content repurposing, planner and calendar, and team workspaces powered by Groq.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
